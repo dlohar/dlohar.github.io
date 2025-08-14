@@ -1,408 +1,321 @@
-<!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!doctype html>
+<html lang="en">
 <head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125493903-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Debasmita Lohar — Academic Website</title>
+  <meta name="description" content="Postdoctoral Researcher — Program Analysis, Approximate Computing, Probabilistic Analysis."/>
+  <style>
+    :root{
+      --bg:#f6f7f8; --panel:#ffffff; --text:#111827; --muted:#6b7280; --line:#d1d5db;
+      --maxw: 980px; --radius:18px; --shadow:0 2px 4px rgba(0,0,0,.06), 0 10px 25px rgba(0,0,0,.08);
+    }
+    html{scroll-behavior:smooth}
+    *{box-sizing:border-box}
+    body{margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; color:var(--text); background:var(--bg); line-height:1.6}
+    img{max-width:100%; display:block}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--maxw); margin-inline:auto; padding:0 1rem}
+    .muted{color:var(--muted)}
+    .btn{display:inline-flex; align-items:center; gap:.5rem; padding:.6rem .9rem; border-radius:12px; background:#fff; border:1.5px solid var(--line); font-weight:600}
+    .btn:hover{filter:brightness(.98)}
+    .grid{display:grid; gap:1rem}
+    .grid-2{grid-template-columns:1fr}
+    .grid-3{grid-template-columns:1fr}
+    @media(min-width:900px){.grid-2{grid-template-columns:1.4fr .9fr} .grid-3{grid-template-columns:repeat(3,1fr)}}
+    .card{background:#fff; border-radius:var(--radius); box-shadow:var(--shadow); padding:1.1rem}
+    section{scroll-margin-top:88px; padding:2.5rem 0; background:var(--panel); border-bottom:none}
+    section:last-of-type{border-bottom:none}
+    h1,h2,h3{line-height:1.2}
+    h1{font-size:clamp(1.9rem, 3.4vw, 2.6rem); margin:0}
+    h2{font-size:clamp(1.4rem, 2.4vw, 1.9rem); margin:0 0 1rem}
+    h3{font-size:1.125rem; margin:0 0 .25rem}
+    p{margin:.5rem 0}
+    .kicker{letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-size:.78rem}
+    .row{display:flex; align-items:center; gap:.5rem; flex-wrap:wrap}
+    .list-clean{list-style:none; padding:0; margin:0}
+    /* Header / Nav */
+    header{position:sticky; top:0; z-index:30; backdrop-filter: blur(6px); background:rgba(255,255,255,.9); border-bottom:none}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:60px}
+    .brand{font-weight:700}
+    nav .menu{display:flex; gap:.25rem; flex-wrap:wrap}
+    nav .menu a{padding:.45rem .6rem; border-radius:10px}
+    nav .menu a:hover{background:#f3f4f6}
+    details.nav-mobile{display:none}
+    details.nav-mobile summary{list-style:none; cursor:pointer; padding:.45rem .6rem; border:1.5px solid var(--line); border-radius:10px}
+    details.nav-mobile[open] summary{background:#f3f4f6}
+    details.nav-mobile .links{margin-top:.5rem; display:grid; gap:.4rem}
+    @media(max-width:860px){nav .menu{display:none} details.nav-mobile{display:block}}
+    /* Hero (white panel sits on grey page bg) */
+    .hero{background:linear-gradient(180deg, #f8fafc 0%, #ffffff 75%)}
+    .hero-grid{display:grid; gap:1rem; align-items:center}
+    .hero-inner{padding:1.6rem 0 1rem}
+    @media(min-width:900px){.hero-grid{grid-template-columns:1.3fr .9fr}}
+    .portrait{aspect-ratio:4/5; width:min(300px, 100%); margin:0 auto; background:#f3f4f6; border-radius:20px; box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center; color:var(--muted); font-weight:600}
+    .portrait img{width:100%; height:100%; object-fit:cover; border-radius:20px}
+    .contact-inline{margin-top:.8rem; font-size:.95rem; color:var(--muted)}
+    .contact-inline a{text-decoration:underline; color:var(--muted)}
+    /* Quick links */
+    .qlink{display:flex; align-items:center; gap:.55rem; padding:.55rem .7rem; border:1.5px solid var(--line); border-radius:12px; background:#fff; text-decoration:none; font-weight:600}
+    .qlinks{display:flex; flex-wrap:wrap; gap:.5rem}
+    .icon{width:18px; height:18px; display:inline-block}
+    /* News timeline */
+    .timeline{position:relative; display:grid; gap:1rem; padding-left:1rem}
+    .timeline::before{content:""; position:absolute; left:7px; top:.25rem; bottom:.25rem; width:3px; background:#d1d5db}
+    .tl-item{position:relative; padding:.6rem .75rem .6rem 1rem; border-radius:12px; background:#fff; box-shadow:var(--shadow)}
+    .tl-dot{position:absolute; left:-.6rem; top:1rem; width:10px; height:10px; border-radius:50%; background:#9ca3af; border:2px solid #fff; box-shadow:0 0 0 1px #d1d5db}
+    .tl-badge{display:inline-block; font-size:.72rem; font-weight:700; letter-spacing:.04em; padding:.18rem .5rem; border-radius:999px; background:#f3f4f6; border:1.5px solid var(--line); color:#374151; margin-right:.4rem}
+    .tl-item:hover{transform:translateY(-1px); transition:transform .15s ease}
+    /* Footer */
+    footer{border-top:2px solid var(--line); padding:1.6rem 0; color:#6b7280; font-size:.95rem; background:var(--panel)}
+    footer a{text-decoration:underline}
+    @media print{header, details.nav-mobile { display:none !important; } section{padding:1rem 0; border-bottom:none} .card{box-shadow:none}}
+  
+    /* Blue links (non-button) */
+    a:not(.btn) { color:#2563eb; }
+    a:not(.btn):hover { text-decoration:underline; }
+    /* Section headers */
+    section h2 {
+        border-bottom: 2px solid var(--line);
+        padding-bottom: .3rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+    }
+    /* Hero name underline */
+    .hero h1 {
+        margin-bottom: .5rem;
+    }
 
-  gtag('config', 'UA-125493903-1');
-</script>
 
-    <title>Debasmita Lohar</title>
-    <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Responsive HTML5 Website landing Page for Developers">
-    <meta name="author" content="3rd Wave Media">
-    <link rel="shortcut icon" href="favicon.ico">
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <!-- Global CSS -->
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
-    <!-- github acitivity css -->
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
-    <link rel="stylesheet" href="http://caseyscarborough.github.io/github-activity/github-activity-0.1.0.min.css">
+    header a { color: #000 !important; }
+    header { border-bottom: 2px solid var(--line) !important; background:#fff; }
 
-    <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
+    .hero .muted { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: 1rem; color: var(--muted); }
+
+</style>
 </head>
-
 <body>
-    <!-- ******HEADER****** -->
-    <header class="header">
-        <div class="container">
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top">Debasmita Lohar</a>
+      <nav aria-label="Primary">
+        <div class="menu">
+          <a href="#about">About</a>
+          <a href="#news">News</a>
+          <a href="#publications">Publications</a>
+          <a href="#services">Services</a>
+          <a href="#teaching">Teaching</a>
+          <a href="#honors">Honors</a>
+          <a href="#theses">Theses</a>
+        </div>
+        <details class="nav-mobile">
+          <summary>Menu ▾</summary>
+          <div class="links">
+            <a href="#about">About</a><a href="#news">News</a><a href="#publications">Publications</a><a href="#services">Services</a><a href="#teaching">Teaching</a><a href="#honors">Honors</a><a href="#theses">Theses</a>
+          </div>
+        </details>
+      </nav>
+    </div>
+  </header>
 
+  <!-- Hero -->
+  <section id="top" class="hero">
+    <div class="container">
+      <div class="hero-grid hero-inner">
+        <div>
+          <p class="kicker">Postdoctoral Researcher</p>
+          <h1>Debasmita Lohar</h1>
+          <p class="muted" style="max-width:52ch">“The true measure of success is how many times you can bounce back from failure.” — Stephen Richards</p>
+          <div class="contact-inline">
+            <div>Email: <span>debasmita.lohar [at] kit [dot] edu</span></div>
+            <div>Address: Room 202, Building 50.34, <br> KIT / Institute of Information Security and Dependability (KASTEL)</div>
+          </div>
+        </div>
+        <div style="justify-self:center">
+            <img src="images/dlohar.jpg" alt="Debasmita Lohar" class="portrait">
+        </div>
+      </div>
+    </div>
+  </section>
 
-            <img class="profile-image img-responsive pull-left" src="assets/images/dlohar.JPG" height=250 width=187.5 alt="Debasmita Lohar" />
-            <div class="profile-content pull-left">
-                <h1 class="name">Debasmita Lohar</h1>
-                <h2 class="desc">Postdoctoral Researcher</h2>
-                <ul class="social list-inline">
-                <li><a href="https://www.linkedin.com/in/debasmitalohar" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="https://github.com/dlohar" target="_blank"><i class="fa fa-github"></i></a></li>
-                <li class="last-item"><a href="https://twitter.com/DebasmitaLohar" target="_blank"><i class="fa fa-twitter"></i></a></li>
+  <!-- About -->
+  <section id="about" style="background:#f6f7f8">
+    <div class="container grid grid-2">
+      <div>
+        <h2>About Me</h2>
+        <p>Hi! I am a Postdoctoral Researcher working with <a href="https://formal.kastel.kit.edu/beckert/index.phtml" target="_blank" rel="noreferrer">Prof. Dr. Bernhard Beckert</a> in the Application-oriented Formal Verification group at KASTEL — Institute of Information Security and Dependability</a>, Karlsruhe Institute of Technology.</p>
+        <p>I received my PhD from Saarland University in collaboration with the Max Planck Institute for Software Systems (MPI-SWS), Saarbrücken, advised by <a href="https://malyzajko.github.io/" target="_blank" rel="noreferrer">Assoc. Prof. Dr. Eva Darulova</a>.</p>
+        <p>My primary research areas are: Program Analysis, Approximate Computing, Probabilistic Analysis, with applications in embedded systems, scientific computing, and machine learning.</p>
+      </div>
+      <aside>
+        <div class="card">
+          <h3>Quick Links</h3>
+          <div class="qlinks" style="margin-top:.4rem">
+            <a class="qlink" href="https://dblp.org/pid/175/2238.html" target="_blank" rel="noreferrer">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="14" height="4" rx="1" stroke="#111827"/><rect x="3" y="10" width="18" height="4" rx="1" stroke="#111827"/><rect x="3" y="16" width="12" height="4" rx="1" stroke="#111827"/></svg>
+              DBLP
+            </a>
+            <a class="qlink" href="https://scholar.google.com/citations?user=ivztul4AAAAJ&hl=en" target="_blank" rel="noreferrer">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 9l9-5 9 5-9 5-9-5z" stroke="#111827"/><path d="M7 12v4a5 5 0 0010 0v-4" stroke="#111827"/></svg>
+              Google Scholar
+            </a>
+            <a class="qlink" href="https://www.linkedin.com/in/debasmitalohar/" target="_blank" rel="noreferrer">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 102.5 6a2.5 2.5 0 002.48-2.5zM3 8h4v13H3zM9 8h4v2h.06a4.4 4.4 0 013.94-2.17C20.5 7.83 22 9.36 22 12.3V21H18v-7.5c0-1.79-.64-3.01-2.26-3.01-1.23 0-1.96.83-2.28 1.64-.12.29-.16.69-.16 1.09V21H9z" fill="#111827"/></svg>
+              LinkedIn
+            </a>
+            <a class="qlink" href="https://github.com/dlohar" target="_blank" rel="noreferrer">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 00-3.64 22.41c.58.1.8-.25.8-.56v-2c-3.26.7-3.95-1.4-3.95-1.4-.53-1.36-1.3-1.72-1.3-1.72-1.06-.73.08-.72.08-.72 1.17.08 1.79 1.22 1.79 1.22 1.04 1.78 2.74 1.27 3.41.97.1-.76.41-1.27.75-1.56-2.6-.3-5.34-1.3-5.34-5.8 0-1.28.46-2.32 1.22-3.14-.12-.3-.53-1.52.12-3.17 0 0 1-.32 3.3 1.2a11.5 11.5 0 016 0c2.3-1.52 3.3-1.2 3.3-1.2.65 1.65.24 2.87.12 3.17.76.82 1.22 1.86 1.22 3.14 0 4.5-2.75 5.5-5.37 5.79.43.37.81 1.1.81 2.23v3.3c0 .31.21.67.81.56A11.5 11.5 0 0012 .5z" fill="#111827"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
 
+  <!-- News (single highlighted card with a timeline) -->
+  <section id="news" style="background:#fff">
+    <div class="container">
+      <div class="card">
+        <div class="row" style="justify-content:space-between; align-items:baseline;">
+          <h2 style="margin:0">News</h2>
+          <span class="kicker" aria-hidden="true">Highlights</span>
+        </div>
+        <div class="timeline" style="margin-top:.8rem">
+          <div class="tl-item">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <span class="tl-badge">New</span>
+            Our paper <strong>Cost of Soundness in Mixed‑Precision Tuning</strong> is accepted at OOPSLA 2025.
+          </div>
+          <div class="tl-item">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <span class="tl-badge">New</span>
+            Our paper <strong>Guaranteeing Safe Control under Finite Precision</strong> is accepted at FMCAD 2025.
+          </div>
+          <div class="tl-item">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <span class="tl-badge">Call</span>
+            I have a master's thesis project — see <a href="https://formal.kastel.kit.edu/offers/?lang=en" target="_blank" rel="noreferrer">topics</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                </ul>
-                </br></br>
-                The true measure of success is how many times you can bounce back from failure.  &nbsp- Stephen Richards
-                </div><!--//profile-->
-            <a class="btn btn-cta-primary pull-right" href="mailto:debasmita.lohar@kit.edu" target="_blank"><i class="fa fa-paper-plane"></i> Contact Me</a>
-        </div><!--//container-->
-    </header><!--//header-->
+  <!-- Publications -->
+  <section id="publications" style="background:#f6f7f8">
+    <div class="container">
+      <h2>Recent Publications</h2>
+      <div class="grid grid-3">
+        <article class="card">
+          <h3>Cost of Soundness in Mixed-Precision Tuning</h3>
+          <p class="muted">Anastasia Isychev and Debasmita Lohar — accepted at OOPSLA 2025.</p>
+          <p class="row"><a class="btn" href="papers/oopsla2025.pdf" target="_blank" rel="noreferrer">Preprint</a> <a class="btn" href="https://zenodo.org/records/15737898" target="_blank" rel="noreferrer">Code</a></p>
+        </article>
+        <article class="card">
+          <h3>Of Good Demons and Bad Angels: Guaranteeing Safe Control under Finite Precision</h3>
+          <p class="muted">Samuel Teuber, Debasmita Lohar, and Bernhard Beckert — accepted at FMCAD 2025.</p>
+          <p class="row"><a class="btn" href="https://ar5iv.org/abs/2507.22760" target="_blank" rel="noreferrer">Extended Version</a></p>
+        </article>
+        <article class="card">
+          <h3>Towards Precision-Aware Safe Neural-Controlled Cyber-Physical Systems</h3>
+          <p class="muted">Harikishan Thevendhriya, Sumana Ghosh, and Debasmita Lohar — ESWEEK-ESL 2024.</p>
+          <p class="row"><a class="btn" href="papers/emsoft-ESL2024.pdf" target="_blank" rel="noreferrer">Preprint</a> <a class="btn" href="slides/EMSOFT2024-Slides.pdf" target="_blank" rel="noreferrer">Presentation</a> <a class="btn" href="https://github.com/harikishants/Nexus" target="_blank" rel="noreferrer">Tool: Nexus</a></p>
+        </article>
+        <article class="card">
+          <h3>Sound Mixed Fixed-Point Quantization of Neural Networks</h3>
+          <p class="muted">Debasmita Lohar, Clothilde Jeangoudoux, Anastasia Volkova, and Eva Darulova — ESWEEK-TECS 2023.</p>
+          <p class="row"><a class="btn" href="papers/emsoft2023.pdf" target="_blank" rel="noreferrer">Paper</a> <a class="btn" href="slides/EMSOFT2023-Slides.pdf" target="_blank" rel="noreferrer">Presentation</a> <a class="btn" href="https://github.com/dlohar/Aster" target="_blank" rel="noreferrer">Tool: Aster</a></p>
+        </article>
+        <article class="card">
+          <h3>A Two-Phase Approach for Conditional Floating-Point Verification</h3>
+          <p class="muted">Debasmita Lohar, Clothilde Jeangoudoux, Joshua Sobel, Eva Darulova, and Maria Christakis — TACAS 2021.</p>
+          <p class="row"><a class="btn" href="papers/tacas2021.pdf" target="_blank" rel="noreferrer">Paper</a> <a class="btn" href="https://www.youtube.com/watch?v=jO7USSY4RJA&ab_channel=DebasmitaLohar" target="_blank" rel="noreferrer">Talk</a> <a class="btn" href="https://github.com/dlohar/blossom" target="_blank" rel="noreferrer">Tool: Blossom</a></p>
+        </article>
+        <article class="card">
+          <h3>Sound Probabilistic Numerical Error Analysis</h3>
+          <p class="muted">Debasmita Lohar, Milos Prokop, and Eva Darulova — iFM 2019.</p>
+          <p class="row"><a class="btn" href="papers/ifm2019.pdf" target="_blank" rel="noreferrer">Paper</a> <a class="btn" href="slides/ifmSlides.pdf" target="_blank" rel="noreferrer">Presentation</a> <a class="btn" href="https://github.com/malyzajko/daisy/tree/probabilistic" target="_blank" rel="noreferrer">Tool</a></p>
+        </article>
+      </div>
+      <p style="margin-top:1rem"><a class="btn" href="https://dblp.uni-trier.de/pers/hd/l/Lohar%3ADebasmita" target="_blank" rel="noreferrer">View all on DBLP</a></p>
+    </div>
+  </section>
 
-    <div class="container sections-wrapper">
-        <div class="row">
-            <div class="primary col-md-8 col-sm-12 col-xs-12">
-                <section class="about section">
-                    <div class="section-inner">
-                        <h2 class="heading">About Me</h2>
-                        <div class="content">
+  <!-- Services -->
+  <section id="services" style="background:#fff">
+    <div class="container">
+      <h2>Services</h2>
+      <ul>
+        <li><strong>Recent:</strong> AEC @ EMSOFT'25, PLDI'25.</li>
+        <li><strong>Older:</strong> SETTA'24, EMSOFT'19 (WIP), AEC @ CAV'23, TACAS'22, CAV'21, TACAS'21.</li>
+      </ul>
+    </div>
+  </section>
 
-                            <p> Hi! I am a Postdoctoral Researcher working with <a href="https://formal.kastel.kit.edu/beckert/index.phtml" target="_blank">Prof. Dr. Bernhard Beckert</a> in the Application-oriented Formal Verification group led at<a href="https://www.kastel.kit.edu/" target="_blank"> KASTEL -- Institute of Information Security and Dependability</a>, Karlsruhe Institute of Technology. </p>
+  <!-- Teaching (grouped) -->
+  <section id="teaching" style="background:#f6f7f8">
+    <div class="container">
+      <h2>Teaching</h2>
+      <div class="card" style="margin-bottom:1rem;">
+        <h3>Karlsruhe Institute of Technology</h3>
+        <ul>
+          <li>Floating-Point Analysis as a part of Formal Systems II: Applications (KIT‑SS25) —
+            <a href="teaching/fp-1.pdf" target="_blank" rel="noreferrer">Day 1</a> ·
+            <a href="teaching/fp-2.pdf" target="_blank" rel="noreferrer">Day 2</a>
+          </li>
+          <li><a href="https://formal.kastel.kit.edu/teaching/Seminar-SS25/" target="_blank" rel="noreferrer">LLMs in Formal Verification</a> (KIT‑SS25)</li>
+          <li><a href="https://formal.kastel.kit.edu/teaching/Seminar-WS2425/" target="_blank" rel="noreferrer">Neural Networks in Formal Verification</a> (KIT‑WS24/25)</li>
+        </ul>
+      </div>
+      <div class="card" style="margin-bottom:1rem;">
+        <h3>Saarland University</h3>
+        <ul>
+          <li><a href="https://people.mpi-sws.org/~eva/courses/programAnalysis19/index.html" target="_blank" rel="noreferrer">Advanced Program Analysis</a> (UdS‑SS19)</li>
+          <li>Program Analysis (UdS‑WS18/19)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Indian Institute of Technology Kharagpur</h3>
+        <ul>
+          <li>Fault Tolerant Systems (Spring 2016, 2015, 2014)</li>
+          <li>Theory of Computation (Fall 2015)</li>
+          <li>Computer Organization and Architecture Lab (Fall 2014)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-                            I received my PhD from <a href="https://www.uni-saarland.de/en/home.html" target="_blank">Saarland University</a> in collaboration with the <a href="http://www.mpi-sws.org" target="_blank">Max Planck Institute for Software Systems (MPI-SWS)</a>, Saarbrücken, advised by <a href="https://malyzajko.github.io/" target="_blank"> Assoc. Prof. Dr. Eva Darulova</a>.</p>
+  <!-- Honors and Awards -->
+  <section id="honors" style="background:#fff">
+    <div class="container">
+      <h2>Honors and Awards</h2>
+      <ul>
+        <li>Selected to participate in the 10th Heidelberg Laureate Forum, 2023.</li>
+        <li>Best Presentation Award (iFM PhD Symposium), 2019.</li>
+      </ul>
+    </div>
+  </section>
 
- <p>My primary research areas are: Program Analysis, Approximate Computing, Probabilistic Analysis, with applications in embedded systems, scientific computing, and machine learning.</p> 
+  <!-- Theses -->
+  <section id="theses" style="background:#f6f7f8">
+    <div class="container">
+      <h2>Theses</h2>
+      <ul>
+        <li>Doctoral Thesis at Saarland University: <a href="theses/dissertation.pdf" target="_blank" rel="noreferrer">Expanding the Horizons of Finite-Precision Analysis</a></li>
+        <li>Master's Thesis at IIT Kharagpur: <a href="theses/Thesis.pdf" target="_blank" rel="noreferrer">Formal Methods for Probabilistic Failure Analysis of Behavioral Specifications</a></li>
+      </ul>
+    </div>
+  </section>
 
-                        </div><!--//content-->
-                    </div><!--//section-inner-->
-                </section><!--//section-->
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <span>© <span id="year"></span> Debasmita Lohar. All rights reserved.</span>
+    </div>
+  </footer>
 
-                <section class="projects section">
-                    <div class="section-inner">
-                        <h2 class="heading">News</h2>
-                        <div class="content">
-   <div class="item">
-                                <!--<li> Starting this December, I will be joining the <a href="https://en.itu.dk/">IT University of Copenhagen</a> as an <em> Assistant Professor</em>!!
-                                </li><br>-->
-                                <li> Our paper <em>Cost of Soundness in Mixed-Precision Tuning</em> has been accepted at <em>OOPSLA 2025</em>.</li><br>
-                                <li> Our paper on <em>Guaranteeing Safe Control under Finite Precision</em> has been accepted at <em>FMCAD 2025</em>.</li><br>
-                                <li> I have an open master's thesis project. Check out the <a href="https://formal.kastel.kit.edu/offers/?lang=en"><em>call for topics</em></a>.
-                                </li>
-                            </div> <!--//item-->
-                        </div><!--//content-->
-                    </div><!--//section-inner-->
-                </section><!--//section-->
-
-
-                <section class="latest section">
-                    <div class="section-inner">
-                        <h2 class="heading">Publications</h2>
-                        <div class="content">
-                                                 <div class="item">
-
-                                                  </div>
-                                                <ul>
-                 <li> <em>Cost of Soundness in Mixed-Precision Tuning</em>, Anastasia Isychev and <b>Debasmita Lohar</b>, accepted at OOPSLA 2025. (<a href="assets/documents/papers/oopsla2025.pdf" target="_blank">Preprint</a>) (<a href="https://zenodo.org/records/15737898" target="_blank">Code</a>)
-                 </li> <br>
-                 <li> <em>Of Good Demons and Bad Angels: Guaranteeing Safe Control under Finite Precision</em>, Samuel Teuber, <b>Debasmita Lohar</b>, and Bernhard Beckert, accepted at FMCAD 2025.
-                 (<a href="https://arxiv.org/abs/2507.22760" target="_blank">Extended Version</a>)
-                 </li> <br>
-                <li> <em>Towards Precision-Aware Safe Neural-Controlled Cyber-Physical Systems</em>, Harikishan T S, Sumana Ghosh, and <b>Debasmita Lohar</b>, ESWEEK-ESL 2024.
-                    (<a href="assets/documents/papers/emsoft-ESL2024.pdf" target="_blank">Preprint</a>)
-                    (<a href="assets/documents/slides/EMSOFT2024-Slides.pdf" target="_blank">Presentation</a>) (<a href="https://github.com/harikishants/Nexus" target="_blank">Tool: Nexus</a>)
-                    <!---->
-                    </li> <br>
-                <li> <em>Sound Mixed Fixed-Point Quantization of Neural Networks</em>, <b>Debasmita Lohar</b>, Clothilde Jeangoudoux, Anastasia Volkova, and Eva Darulova, ESWEEK-TECS 2023.
-                    (<a href="assets/documents/papers/emsoft2023.pdf" target="_blank">Paper</a>)
-                    (<a href="assets/documents/slides/EMSOFT2023-Slides.pdf" target="_blank">Presentation</a>) (<a href="https://github.com/dlohar/Aster"target="_blank">Tool: Aster</a>)
-                    </li> <br>
-                        <li> <em>A Two-Phase Approach for Conditional Floating-Point Verification</em>, <b>Debasmita Lohar</b>, Clothilde Jeangoudoux, Joshua Sobel, Eva Darulova, and Maria Christakis, TACAS 2021.
-                        (<a href="assets/documents/papers/tacas2021.pdf" target="_blank">Paper</a>) (<a href="https://www.youtube.com/watch?v=jO7USSY4RJA&ab_channel=DebasmitaLohar" target="_blank">Talk</a>) (<a href="https://github.com/dlohar/blossom" target="_blank">Tool: Blossom</a>)
-                        </li> <br>
-                        <li> <em>Sound Probabilistic Numerical Error Analysis</em>,
-                        <b>Debasmita Lohar</b>, Milos Prokop, and Eva Darulova, iFM 2019.
-                        (<a href="assets/documents/papers/ifm2019.pdf" target="_blank">Paper</a>)
-                        (<a href="assets/documents/slides/ifmSlides.pdf" target="_blank">Presentation</a>) (<a href="https://github.com/malyzajko/daisy/tree/probabilistic" target="_blank">Tool: PrAn</a>)
-                        </li> <br>
-                        <li> <em> Discrete Choice in the Presence of Numerical Uncertainties</em>,
-                        <b>Debasmita Lohar</b>, Eva Darulova, Sylvie Putot, and Eric Goubault, ESWEEK-TCAD 2018.
-                        (<a href="assets/documents/papers/emsoft2018.pdf" target="_blank">Paper</a>)
-                        (<a href="assets/documents/slides/DLoharEM02C_2.pdf" target="_blank">Presentation</a>) (<a href="https://github.com/malyzajko/daisy/tree/probabilistic" target="_blank">Code</a>)
-                        </li><br>
-                        <li> <em> Work-in-Progress: Verifying Stability Guarantees of Control Software Implementations in the Presence of Sensor Level Faults</em>,
-                        Saurav Kumar Ghosh, <b>Debasmita Lohar</b>, Dibyendu Das, and Soumyajit Dey, EMSOFT 2017.
-                        (<a href="https://dl.acm.org/citation.cfm?id=3125569" target="_blank">Paper</a>)
-                        </li> <br>
-                        <li> Failure Estimation of Behavioral Specifications, <b>Debasmita Lohar</b>, Anudeep Dunaboyina, Dibyendu Das, and Soumyajit Dey, SETTA 2016. 
-                        (<a href="https://link.springer.com/chapter/10.1007/978-3-319-47677-3_20" target="_blank">Paper</a>) (<a href="https://github.com/dlohar/ProPFA" target="_blank">Tool: ProPFA</a>)
-                        </li> </br>
-                        <li>Integrating Formal Methods with Testing for Reliability Estimation of Component Based Systems,
-                        <b>Debasmita Lohar</b> and Soumyajit Dey, ISSRE 2015.
-                        (<a href="http://ieeexplore.ieee.org/document/7392033/" target="_blank">Paper</a>)
-                        </li>
-                        </ul>
-                        <p><a class="more-link" href="http://dblp.uni-trier.de/pers/hd/l/Lohar:Debasmita"
-
-                                                                target="_blank"><i class="fa fa-external-link"></i> View on DBLP</a></p>
-                                                 </div><!--//content-->
-                    </div><!--//section-inner-->
-                </section><!--//section-->
-
-              <!-- <section class="latest section">
-                    <div class="section-inner">
-                        <h2 class="heading">Selected Projects</h2>
-                        <div class="content">
-                         <div class="item">
-                            <div class="desc text-left">
-                                <h3 class="title">Memory Safety Verification of FreeRTOS protocols</h3>
-                                <p class="summary"><a href="https://aws.amazon.com/blogs/security/tag/automated-reasoning/" target="_blank">Automated Reasoning Group, Amazon Web Services (AWS)</a>, Boston,
-                                                                United States </br>
-                                                                Supervisor: <a href="https://www.markrtuttle.com/" target="_blank"> Mark Tuttle</a>
-                                                                </br> Duration: May 2019 - July 2019 </p>
-
-                                <div class="desc text-left">
-                                <p>This project was focused on verifying memory safety of network protocols of Amazon's FreeRTOS using Bounded Model Checking (<a href ="https://www.freertos.org/2020/02/ensuring-the-memory-safety-of-freertos-part-1.html" target="_blank">blog post</a>).
-                                All proofs are available on <a href ="https://github.com/dlohar/amazon-freertos" target="_blank">Github</a>.
-                                </p>
-                                </div>
-                                 </div>
-                            </div>
-                            <hr class="divider" />
-                        <div class="item">
-                            <div class="desc text-left">
-                                <h3 class="title">Automated Verification and Approximation</h3>
-                                <p class="summary"><a href="https://www.mpi-sws.org/" target="_blank">Max Planck Institute for Software
-                                                                Systems (MPI-SWS)</a>, Saarbrücken,
-                                                                Germany </br>
- Supervisor: <a href="https://people.mpi-sws.org/~eva/" target="_blank"> Dr. Eva Darulova</a>
-                                                                </br> Duration: July 2016 - September 2016 </p>
-
-                                <div class="desc text-left">
-                                    <p>The motivation of this project was to statically infer properties of a program in presence of imprecise
-                                                                        probabilistic inputs. The probabilistic analysis can be found on <a href ="https://github.com/malyzajko/daisy/tree/probabilistic" target="_blank"> Github</a>.</p>
-                                </div>
-                                 </div>
-                            </div>
-                            <hr class="divider" />
-                             <div class="item">
-                                <div class="desc text-left">
-                                    <h3 class="title"> RTOS Validation and Development Support</a></h3>
-                                                                        <p class="summary"><a href="http://iitkgp.ac.in/" target="_blank">Indian Institute of Technology (IIT)</a>,
-                                                                        Kharagpur, India</br>
-                                                            Supervisors: <a href="http://cse.iitkgp.ac.in/~pallab/" target="_blank"> Prof. (Dr.) Pallab Dasgupta</a> and
-                                                                <a href="http://cse.iitkgp.ac.in/~soumya/" target="_blank">Dr. Soumyajit Dey </a>
-                                                                </br>
-                                                                Sponsor: <a href="http://www.hal-india.com/" target="_blank"> Hindustan Aeronautics Limited </a></br>
-                                                                Duration: October 2015 - June 2016</p>
-
-                                                                <div class="desc text-left">
-                                    <p> This project was focused on formal verification of a real time operating system of a safety critical
-                                                                        avionic system. </p>
-                                                                </div>
-                                                                </div>
-                                                                </div>
-
-                                <hr class="divider" />
-                                                                 <div class="item">
-                                <div class="desc text-left">
-                                    <h3 class="title"> Architecture and Algorithmic Optimizations for Speech based Communication Interfaces on Mobile Devices
-                                                                        </a></h3>
-                                                                        <p class="summary"><a href="http://iitkgp.ac.in/" target="_blank">Indian Institute of Technology (IIT)</a>,
-                                                                        Kharagpur, India</br>
-                                                                Supervisor: <a href="http://cse.iitkgp.ac.in/~soumya/" target="_blank">Dr. Soumyajit Dey </a>
-                                                                </br>
-                                                                Sponsor: Intel Semiconductor (US) Limited </br>
-                                                                Duration: September 2013 - January 2016 </p>
-                                                                <div class="desc text-left">
-                                                                <p> The main objective of this project was to present a hardware-software co-processing speech recognizer where the hardware
-                                                                accelerator would accelerate computationally intensive parts of the     algorithm.</p>
-                                                                        </div>
-                                                        </div>
-                                                        </div>
-                    </div>
-                </section>-->
-
-
-            </div><!--//primary-->
-            <div class="secondary col-md-4 col-sm-12 col-xs-12">
-
-                <aside class="experience section">
-                    <div class="section-inner">
-                                        <h2 class="heading">Services</h2>
-                        <div class="content">
-
-                                                 <div class="item">
-                        <ul>
-                        <li> <b>Recent:</b> AEC @ EMSOFT'25, PLDI'25.</li><br>
-                        <li> <b>Older:</b> SETTA'24, EMSOFT'19 (WIP)<br>
-                        AEC @ CAV'23, TACAS'22, CAV'21, TACAS'21.</li></ul>
-                        </div><!--//content-->
-                                        </div>
-                    </div><!--//section-inner-->
-                </aside><!--//section-->
-
-
-
-
-                <aside class="experience section">
-                    <div class="section-inner">
-                                        <h2 class="heading">Teaching</h2>
-                        <div class="content">
-
-                                                 <div class="item">
-                        <ul>
-                        <li> Floating-Point Analysis as a part of Formal Systems II: Applications (KIT-SS25) <br>
-                        	(<a href="assets/documents/Teaching/fp-1.pdf" target="_blank">Day1</a>) (<a href="assets/documents/Teaching/fp-2.pdf" target="_blank">Day2</a>)</li></br>
-                        <li> <a href="https://formal.kastel.kit.edu/teaching/Seminar-SS25/" target="_blank"> LLMs in Formal Verification</a> (KIT-SS25) </li></br>
-                        <li> <a href="https://formal.kastel.kit.edu/teaching/Seminar-WS2425/" target="_blank">Neural Networks in Formal Verification</a> (KIT-WS24/25)</li></br>
-                        <li> <a href="https://people.mpi-sws.org/~eva/courses/programAnalysis19/index.html" target="_blank"> Advanced Program Analysis</a> (UdS-SS19)</li></br>
-                        <li> Program Analysis (UdS-WS18/19) </li></br>
-                                                <li> Fault Tolerant Systems (IITKgp-Spring 2016, 2015, 2014) </li></br>
-                                                <li> Theory of Computation (IITKgp-Fall 2015) </li></br>
-                                                <li> Computer Organization and Architecture Lab (IITKgp-Fall 2014)</li></ul>
-                                        </div>
-                    </div><!--//section-inner-->
-                </aside><!--//section-->
-
-                             <aside class="experience section">
-                    <div class="section-inner">
-                                        <h2 class="heading">Honors and Awards</h2>
-                        <div class="content">
-                                                 <div class="item">
-                        
-                        <li> Selected to participate in the 10th Heidelberg Laureate Forum, 2023.</li>
-                        <br>
-                        <li> Received the Best Presentation Award (iFM PhD Symposium), 2019.</li>
-
- </div>
-                        
-                    </div>
-                </aside>
-
-<aside class="experience section">
-                    <div class="section-inner">
-                                        <h2 class="heading">Theses</h2>
-                        <div class="content">
-                                                 <div class="item">
-                        
-                        <li> Doctoral Thesis at Saarland University:<br>
-                        <a href="assets/documents/dissertation.pdf" target="_blank">Expanding the Horizons of Finite-Precision Analysis</a> </li>
-                        <br>
-                        <li> Master's Thesis at IIT Kharagpur:<br>
-                            <a href="assets/documents/Thesis.pdf" target="_blank">Formal Methods for Probabilistic Failure Analysis of Behavioral Specifications</a>
-                            </li>
-
- </div>
-                        
-                    </div>
-                </aside>
-
-
-
-                
-                
-               <!-- <aside class="skills aside section"> 
-                    <div class="section-inner">
-                        <h2 class="heading">Skills</h2>
-                        <div class="content">
-                            <div class="skillset">
-
-                                <div class="item">
-                                    <h3 class="level-title">Functional Programming Languages </h3>
-                                                                        <ul>
-                                                                        <li> Scala </li>
-                                                                        <li> OCaml</li>
-
-                                                                        </ul>
-
-                                </div>
-
-                                <div class="item">
-                                    <h3 class="level-title">High Level Languages</h3>
-                                                                        <ul>
-                                                                        <li> C</li>
-                                                                        <li> C++</li>
-                                                                        <li> Java</li>
-                                                                        </ul>
-                                </div>
-
-                                <div class="item">
-                                    <h3 class="level-title">Hardware Description Languages</h3>
-                                                                        <ul>
-                                                                        <li> Verilog</li>
-                                                                        <li> VHDL</li>
-                                                                        </ul>
-                                </div>
-                                  </div>
-                                        </div>
-                    </div>
-                </aside>-->
-
-                
-
-                <!-- <aside class="languages aside section">
-                    <div class="section-inner">
-                        <h2 class="heading">Languages</h2>
-                        <div class="content">
-                            <ul class="list-unstyled">
-                                <li class="item">
-                                    <span class="title"><strong>Bengali:</strong></span>
-                                    <span class="level">Native Speaker <br class="visible-xs"/><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </span>
-                                </li>
-                                <li class="item">
-                                    <span class="title"><strong>English:</strong></span>
-                                    <span class="level">Professional Proficiency <br class="visible-sm visible-xs"/><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-half"></i></span>
-                                </li>
-                                <li class="item">
-                                    <span class="title"><strong>Hindi:</strong></span>
-                                    <span class="level">Professional Proficiency <br class="visible-sm visible-xs"/><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-half"></i></span>
-                                </li>
-                                <li class="item">
-                                    <span class="title"><strong>German:</strong></span>
-                                    <span class="level">Elementary Proficiency <br class="visible-sm visible-xs"/><i class="fa fa-star"></i> </span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </aside>-->
-
-
-
-            </div><!--//secondary-->
-        </div><!--//row-->
-    </div><!--//masonry-->
-
-    <div class="desc text-right"><a href='http://www.counter12.com'><img src='http://www.counter12.com/img-B138YdYYBC3CA464-26.gif'
-        border='0' alt='web counter free'></a><script type='text/javascript' src='http://www.counter12.com/ad.js?id=B138YdYYBC3CA464'></script></div>
-    <!-- ******FOOTER****** -->
-    <footer class="footer">
-        <div class="container text-center">
-         <a href="https://imprint.mpi-klsb.mpg.de/sws/people/dlohar">Imprint</a> /
-<a href="https://data-protection.mpi-klsb.mpg.de/sws/people/dlohar">Data Protection</a> <br>
-                <!--//<small class="copyright">Designed by Debasmita Lohar</a> </small>-->
-        </div><!--//container-->
-    </footer><!--//footer-->
-
-    <!-- Javascript -->
-    <script type="text/javascript" src="assets/plugins/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/jquery-rss/dist/jquery.rss.min.js"></script>
-    <!-- github activity plugin -->
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
-    <script type="text/javascript" src="http://caseyscarborough.github.io/github-activity/github-activity-0.1.0.min.js"></script>
-    <!-- custom js -->
-    <script type="text/javascript" src="assets/js/main.js"></script>
-
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
-
-
-
-
